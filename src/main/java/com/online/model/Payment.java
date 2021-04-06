@@ -19,7 +19,5 @@ public class Payment {
     private String cardNoDisplay;
     private String expireDate;
     private String cvv;
-    private Boolean defaultPaymentMethod;
-
     private Long userId;
 }

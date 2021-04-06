@@ -1,6 +1,7 @@
 package com.online.service;
 
 import com.online.exception.DuplicateEmailException;
+import com.online.exception.EmailNotFoundException;
 import com.online.model.User;
 import com.online.model.UserPrincipal;
 import com.online.repo.UserRepo;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import static com.online.constant.UserConstants.EMAIL_ALREADY_EXISTS;
+import static com.online.constant.UserConstants.NO_USER_FOUND_BY_EMAIL;
 import static com.online.enums.Role.ROLE_USER;
 
 @Service
@@ -30,19 +32,29 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 
     @Override
-    public User findUserByEmail(String email) {
+    public User findUserByEmail(String email) throws EmailNotFoundException {
+        User currentUser = userRepo.findByEmail(email);
+        if (currentUser == null) {
+            throw new EmailNotFoundException(NO_USER_FOUND_BY_EMAIL);
+        }
         return userRepo.findByEmail(email);
     }
 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = findUserByEmail(username);
+        User user = null;
+        try {
+            user = findUserByEmail(username);
+        } catch (EmailNotFoundException e) {
+            e.printStackTrace();
+        }
         return new UserPrincipal(user);
     }
 
     @Override
-    public User login(User user) {
+    public User login(User user) throws EmailNotFoundException {
+
         return findUserByEmail(user.getEmail());
     }
 

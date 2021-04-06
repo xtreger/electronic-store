@@ -8,7 +8,7 @@ public interface UserService {
 
     public User login(User user) throws EmailNotFoundException;
 
-    public User findUserByEmail(String email);
+    public User findUserByEmail(String email) throws EmailNotFoundException;
 
     User register(User user) throws DuplicateEmailException;
 }

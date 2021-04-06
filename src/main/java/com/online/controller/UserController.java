@@ -1,6 +1,7 @@
 package com.online.controller;
 
 import com.online.exception.DuplicateEmailException;
+import com.online.exception.EmailNotFoundException;
 import com.online.jwt.JWTTokenProvider;
 import com.online.model.User;
 import com.online.model.UserPrincipal;
@@ -41,7 +42,7 @@ public class UserController {
 
     @PostMapping("/login")
     @ResponseBody
-    public ResponseEntity<User> login(@RequestBody User user) {
+    public ResponseEntity<User> login(@RequestBody User user) throws EmailNotFoundException {
         authenticate(user.getEmail(), user.getPassword());
         User loggedUser = userService.findUserByEmail(user.getEmail());
         UserPrincipal userPrincipal = new UserPrincipal(loggedUser);
