@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "comments")
@@ -17,6 +18,5 @@ public class Comment {
     private Long itemId;
     private String userName;
     private String comment;
-    private String dateAndTime;
-    private Double rating;
+    private Date dateAndTime = new Date();
 }

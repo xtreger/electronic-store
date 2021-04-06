@@ -26,8 +26,11 @@ public class Address {
     private String city;
     @NotNull
     private String county;
+    @NotNull
     private String eirCode;
+    @NotNull
     private String country;
+    @NotNull
     private Long userId;
 
 }

@@ -1,12 +1,30 @@
 package com.online.service;
 
+import com.online.exception.ItemNotFoundException;
+import com.online.exception.NoItemsFoundException;
 import com.online.model.Item;
-import com.online.model.User;
+
+import java.util.List;
 
 public interface ItemService {
 
-    public User addItem(Item item);
+    Item addItem(Item item);
 
-    public User manageItem();
+    Item updateItem(Item item) throws ItemNotFoundException;
+
+    Item getItem(Long id) throws ItemNotFoundException;
+
+    List<Item> getAllItems() throws NoItemsFoundException;
+
+    void deleteItem(Long id) throws ItemNotFoundException;
+
+    Item updateAmount(Item item) throws ItemNotFoundException;
+
+    Item updatePurchaseAmount(Item item) throws ItemNotFoundException;
+
+    Item updateRating(Item item) throws ItemNotFoundException;
+
+    String addImage(Long id, String s) throws ItemNotFoundException;
+
 
 }

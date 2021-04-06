@@ -21,10 +21,9 @@ public class Item {
     private Double price;
     private String category;
     private String description;
-    private Integer warranty;
     private String image;
-    private Integer amountInStock;
-    private Double rating;
+    private Integer amount;
+    private Integer rating;
     private Integer ratingsAmount;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
