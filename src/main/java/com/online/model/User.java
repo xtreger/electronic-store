@@ -23,7 +23,6 @@ public class User {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
     private String phoneNumber;
-    private String paymentMethod;
     private String role;
     private String[] privileges;
 

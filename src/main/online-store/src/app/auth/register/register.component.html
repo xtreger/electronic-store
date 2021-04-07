@@ -1,0 +1,29 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://img.icons8.com/clouds/344/create-new.png" id="icon" alt="User Icon"/>
+    </div>
+
+    <!-- Login Form -->
+    <form>
+      <label for="name"></label>
+      <input type="text" id="name" class="fadeIn first" name="login" placeholder="Name">
+      <label for="email"></label>
+      <input type="text" id="email" class="fadeIn second" name="login" placeholder="Email">
+      <label for="password"></label>
+      <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password">
+      <label for="repeatPassword"></label>
+      <input type="password" id="repeatPassword" class="fadeIn fourth" name="login" placeholder="Repeat Password">
+      <input type="submit" class="fadeIn fifth" value="Register">
+    </form>
+
+    <!-- Register -->
+    <div id="formFooter">
+      <a [routerLink]="['/login']">Already have an account? Login</a>
+    </div>
+
+  </div>
+</div>

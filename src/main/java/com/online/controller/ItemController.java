@@ -1,5 +1,6 @@
 package com.online.controller;
 
+import com.online.exception.ExceptionHandling;
 import com.online.exception.ItemNotFoundException;
 import com.online.exception.NoItemsFoundException;
 import com.online.model.Comment;
@@ -16,7 +17,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @RestController
-public class ItemController {
+@RequestMapping("/api")
+public class ItemController extends ExceptionHandling {
 
     private final ItemService itemService;
     private final CommentService commentService;

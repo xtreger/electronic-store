@@ -1,0 +1,30 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://img.icons8.com/clouds/2x/login-rounded-right.png" id="icon" alt="User Icon"/>
+    </div>
+
+    <!-- Login Form -->
+    <form>
+      <label for="login"></label>
+      <input type="text" id="login" class="fadeIn first" name="login" placeholder="Login">
+      <label for="password"></label>
+      <input type="password" id="password" class="fadeIn second" name="login" placeholder="Password">
+      <input type="submit" class="fadeIn third" value="Log In">
+    </form>
+
+    <!-- Register -->
+    <div id="formFooter">
+      <a [routerLink]="['/register']">Don't have an account? Register</a>
+    </div>
+
+  </div>
+</div>

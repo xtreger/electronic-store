@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&display=swap');
+
+.kiwi {
+  font-family: 'Kiwi Maru', serif;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}

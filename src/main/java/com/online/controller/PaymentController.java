@@ -1,12 +1,14 @@
 package com.online.controller;
 
 import com.online.exception.CardNotFoundException;
+import com.online.exception.ExceptionHandling;
 import com.online.model.Payment;
 import com.online.service.PaymentService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class PaymentController {
+@RequestMapping("/api")
+public class PaymentController extends ExceptionHandling {
 
     private final PaymentService paymentService;
 

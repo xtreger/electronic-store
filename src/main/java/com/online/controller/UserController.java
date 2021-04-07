@@ -2,6 +2,7 @@ package com.online.controller;
 
 import com.online.exception.DuplicateEmailException;
 import com.online.exception.EmailNotFoundException;
+import com.online.exception.ExceptionHandling;
 import com.online.jwt.JWTTokenProvider;
 import com.online.model.User;
 import com.online.model.UserPrincipal;
@@ -11,15 +12,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import static com.online.constant.SecurityConstants.TIME;
 
 @RestController
-public class UserController {
+@RequestMapping("/api")
+public class UserController extends ExceptionHandling {
 
     private final UserService userService;
     private final AuthenticationManager authenticationManager;

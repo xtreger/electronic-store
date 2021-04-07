@@ -1,12 +1,14 @@
 package com.online.controller;
 
 import com.online.exception.AddressNotFoundException;
+import com.online.exception.ExceptionHandling;
 import com.online.model.Address;
 import com.online.service.AddressService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class AddressController {
+@RequestMapping("/api")
+public class AddressController extends ExceptionHandling {
 
     private final AddressService addressService;
 
