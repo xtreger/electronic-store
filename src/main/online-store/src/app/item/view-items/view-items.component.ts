@@ -9,10 +9,10 @@ import {Item} from "../../models/item/item";
 })
 export class ViewItemsComponent implements OnInit{
 
-  public items: Item[];
+  public items: Item[] = [];
 
   constructor(private itemService: ItemService) {
-    this.items = [];
+
   }
 
   ngOnInit() {

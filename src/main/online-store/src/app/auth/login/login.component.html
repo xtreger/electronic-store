@@ -13,11 +13,11 @@
     </div>
 
     <!-- Login Form -->
-    <form>
+    <form (ngSubmit)="login()" [formGroup]="loginForm" >
       <label for="login"></label>
-      <input type="text" id="login" class="fadeIn first" name="login" placeholder="Login">
+      <input type="text" id="login" class="fadeIn first" formControlName="email"  placeholder="Login">
       <label for="password"></label>
-      <input type="password" id="password" class="fadeIn second" name="login" placeholder="Password">
+      <input type="password" id="password" class="fadeIn second" formControlName="password" placeholder="Password">
       <input type="submit" class="fadeIn third" value="Log In">
     </form>
 

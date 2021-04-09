@@ -4,6 +4,8 @@ import {ViewItemsComponent} from "./item/view-items/view-items.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {RegisterComponent} from "./auth/register/register.component";
 import {AddCardComponent} from "./user/add-card/add-card.component";
+import {AddAddressComponent} from "./user/add-address/add-address.component";
+import {AuthGuard} from "./auth/interceptor/auth.guard";
 
 const routes: Routes = [
   {
@@ -24,7 +26,13 @@ const routes: Routes = [
   },
   {
     path: "add-card",
-    component: AddCardComponent
+    component: AddCardComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "add-address",
+    component: AddAddressComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

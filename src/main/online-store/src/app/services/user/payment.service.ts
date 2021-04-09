@@ -1,7 +1,10 @@
 import {HttpClient} from "@angular/common/http";
 import {Payment} from "../../models/user/card";
 import {Observable} from "rxjs";
-
+import {Injectable} from "@angular/core";
+@Injectable({
+  providedIn: 'root'
+})
 export class PaymentService {
 
   private readonly urls = {

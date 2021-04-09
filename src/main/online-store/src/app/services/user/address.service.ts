@@ -2,7 +2,10 @@ import {HttpClient} from "@angular/common/http";
 import {Address} from "../../models/user/address";
 import {Observable} from "rxjs";
 import {Item} from "../../models/item/item";
-
+import {Injectable} from "@angular/core";
+@Injectable({
+  providedIn: 'root'
+})
 export class AddressService {
 
   private readonly urls = {
