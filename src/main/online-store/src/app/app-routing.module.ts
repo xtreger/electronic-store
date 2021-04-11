@@ -6,6 +6,9 @@ import {RegisterComponent} from "./auth/register/register.component";
 import {AddCardComponent} from "./user/add-card/add-card.component";
 import {AddAddressComponent} from "./user/add-address/add-address.component";
 import {AuthGuard} from "./auth/interceptor/auth.guard";
+import {AddItemComponent} from "./item/add-item/add-item.component";
+import {ItemPageComponent} from "./item/item-page/item-page.component";
+import {EditItemComponent} from "./item/edit-item/edit-item.component";
 
 const routes: Routes = [
   {
@@ -33,7 +36,23 @@ const routes: Routes = [
     path: "add-address",
     component: AddAddressComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "add-item",
+    component: AddItemComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "item-page",
+    component: ItemPageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "edit-item",
+    component: EditItemComponent,
+    canActivate: [AuthGuard]
   }
+
 ];
 
 @NgModule({

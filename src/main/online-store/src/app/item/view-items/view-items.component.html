@@ -1,9 +1,9 @@
 <div class="container py-5">
   <div class="row pb-1">
-    <input type="button" value="Add item">
+    <input type="button" [routerLink]="['/add-item']" value="Add item">
     <form class="form-inline my-2 my-lg-0 ml-auto">
       <input type="search" placeholder="Search" aria-label="Search">
-      <input  type="submit" value="Search">
+      <input type="submit" value="Search">
     </form>
   </div>
   <div class="row pb-5 mb-4">
@@ -12,18 +12,23 @@
       <div class="card rounded shadow-lg border-0 bottom-margin ">
         <a href="">
           <div class="card-body p-4 "><img
-            src="{{item?.image}}" alt=""
+            [src]="getImage(item.image)" alt=""
             class="img-fluid d-block mx-auto mb-3">
             <h4>{{item?.title}}</h4>
             <p class="small text-muted font-italic">{{item?.manufacturer}}</p>
             <h5>€{{item?.price}}</h5>
-            <ul class="list-inline small">
-              <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-              <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-              <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-              <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-              <li class="list-inline-item m-0"><i class="fa fa-star-o text-success"></i></li>
-            </ul>
+            <div class="d-flex flex-row-reverse">
+              <a href="#" class="btn btn-primary tooltips btn-margin" data-placement="top"
+                 data-toggle="tooltip"
+                 data-original-title="Edit">
+                <fa-icon icon="edit" class="font1-size"></fa-icon>
+              </a>
+              <a href="#" class="btn btn-danger tooltips btn-margin" data-placement="top"
+                 data-toggle="tooltip"
+                 data-original-title="Delete">
+                <fa-icon icon="times" class="font1-size"></fa-icon>
+              </a>
+            </div>
           </div>
         </a>
       </div>

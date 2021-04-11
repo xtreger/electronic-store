@@ -1,0 +1,32 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="https://img.icons8.com/clouds/500/000000/stationery.png" id="icon" alt="User Icon"/>
+    </div>
+
+    <!-- Login Form -->
+    <form> <!-- [formGroup]="addItemForm" (ngSubmit)="onAdd()"-->
+
+      <input type="text" formControlName="title" class="fadeIn first" name="login" placeholder="Title">
+
+      <input type="text" formControlName="manufacturer" class="fadeIn first" name="login" placeholder="Manufacturer">
+
+      <input type="text" formControlName="price" class="fadeIn second" name="login" placeholder="Price">
+
+
+      <input type="text" formControlName="category" class="fadeIn second" name="login" placeholder="Category">
+
+      <input type="text" formControlName="description" class="fadeIn third" name="login" placeholder="Description">
+
+      <input type="text" formControlName="amount" class="fadeIn third" name="login" placeholder="Stock Amount">
+
+      <input type="submit" class="fadeIn fourth" value="Confirm">
+      <input type="button" class="fadeIn fourth" [routerLink]="['/view-items']" value="Cancel">
+
+    </form>
+
+  </div>
+</div>

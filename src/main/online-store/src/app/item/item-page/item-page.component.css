@@ -28,14 +28,6 @@ body {
   height: 10px;
 }
 
-.font1-size {
-  font-size: 15px;
-}
-
-.btn-margin {
-  margin-right: 5px;
-}
-
 .bottom-margin {
   margin-bottom: 30px;
 }
@@ -85,17 +77,24 @@ a {
   cursor:pointer;
 }
 
+.comments {
+  margin-left: 50px;
+}
+
+.kiwi {
+  font-family: 'Kiwi Maru', serif;
+}
+
 input[type=text], input[type=search] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
-  padding: 8px 32px;
+  padding: 8px 8px;
   text-align: left;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 5px;
-  width: 65%;
   border: 2px solid #f6f6f6;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
@@ -106,6 +105,14 @@ input[type=text], input[type=search] {
   border-radius: 5px 5px 5px 5px;
 }
 
+.commentWidth{
+  width: 87%;
+}
+
+.amountWidth{
+  width: 10%;
+}
+
 input[type=text], input[type=search]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5cba9e;
@@ -113,5 +120,12 @@ input[type=text], input[type=search]:focus {
 }
 
 input[type=text], input[type=search]::placeholder {
-  color: #cccccc;
+  color: #000000;
+}
+
+
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
 }

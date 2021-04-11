@@ -29,4 +29,7 @@ export class ViewItemsComponent implements OnInit{
 
   }
 
+  getImage(image: string|SVGImageElement) {
+    return 'data:image/jpeg;base64,' + image;
+  }
 }

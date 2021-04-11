@@ -75,7 +75,7 @@ public class ItemController extends ExceptionHandling {
 
     @PostMapping("/addImage/{id}")
     @ResponseBody
-    public String addImage(@PathVariable("id") Long id, @RequestParam("image") MultipartFile image) throws IOException, ItemNotFoundException {
+    public String addImage(@PathVariable("id") Long id, @RequestParam("imageFile") MultipartFile image) throws IOException, ItemNotFoundException {
 
         String s = new String(Base64.encodeBase64(image.getBytes()), StandardCharsets.UTF_8);
 

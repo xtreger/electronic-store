@@ -2,7 +2,7 @@ package com.online.constant;
 
 public class SecurityConstants {
 
-    public static final String[] PUBLIC_URLS = {"/api/login", "/api/register"};
+    public static final String[] PUBLIC_URLS = {"/api/login", "/api/register", "/api/getItems"};
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String TOKEN_CANNOT_BE_VERIFIED = "Token cannot be verified.";
     public static final String ISSUER = "Store";

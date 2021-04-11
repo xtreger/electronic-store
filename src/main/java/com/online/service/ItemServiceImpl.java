@@ -1,5 +1,6 @@
 package com.online.service;
 
+import com.google.gson.Gson;
 import com.online.exception.ItemNotFoundException;
 import com.online.exception.NoItemsFoundException;
 import com.online.model.Item;
@@ -101,7 +102,7 @@ public class ItemServiceImpl implements ItemService {
         Item currentItem = getItem(id);
         currentItem.setImage(s);
         itemRepo.save(currentItem);
-        return currentItem.getImage();
+        return new Gson().toJson("Success");
 
 
     }

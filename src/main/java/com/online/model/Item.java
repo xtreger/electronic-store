@@ -21,6 +21,7 @@ public class Item {
     private Double price;
     private String category;
     private String description;
+    @Lob
     private String image;
     private Integer amount;
     private Integer rating;
