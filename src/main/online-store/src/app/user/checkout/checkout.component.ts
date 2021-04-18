@@ -70,14 +70,16 @@ export class CheckoutComponent implements OnInit {
 
   onDeleteAddress(id: number): void {
     this.addressService.deleteAddress(id).subscribe(response => {
-        this.addresses.splice(1, this.addresses.findIndex(i => i.id === response));
+        this.addresses.splice( this.addresses.findIndex(i => i.id === response), 1);
       }
     );
   }
 
   onDeleteCard(id: number): void {
     this.cardService.deletePayment(id).subscribe(response => {
-        this.cards.splice(1, this.cards.findIndex(x => x.id === response));
+      console.log(response);
+        this.cards.splice( this.cards.findIndex(x => x.id == response), 1);
+      console.log(this.cards);
       }
     );
   }
@@ -97,7 +99,7 @@ export class CheckoutComponent implements OnInit {
 
   onDeleteCartItem(id: number): void {
     this.itemService.deleteCartItem(id).subscribe(response => {
-        this.cartItems.splice(1, this.cartItems.findIndex(i => i.id === response));
+        this.cartItems.splice( this.cartItems.findIndex(i => i.id === response),1);
       }
     );
   }

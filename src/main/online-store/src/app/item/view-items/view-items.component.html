@@ -2,12 +2,12 @@
   <div class="row pb-1">
     <input type="button" [routerLink]="['/add-item']" *ngIf="userService.isAdmin() | async" value="Add item">
     <form class="form-inline my-2 my-lg-0 ml-auto">
-      <input type="search" placeholder="Search" aria-label="Search">
+      <input type="search" [formControl]="itemFilterControl" placeholder="Search" aria-label="Search">
       <input type="submit" value="Search">
     </form>
   </div>
   <div class="row pb-5 mb-4">
-    <div *ngFor="let item of items" class="col-lg-3 col-md-6 mb-4 mb-lg-0" >
+    <div *ngFor="let item of items | filterItems: itemFilterControl.value" class="col-lg-3 col-md-6 mb-4 mb-lg-0" >
       <!-- Card-->
       <div class="card rounded shadow-lg border-0 bottom-margin " >
           <div class="card-body p-4 "><img

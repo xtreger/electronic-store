@@ -29,6 +29,7 @@ import {ViewOrderDetailsComponent} from './user/view-order-details/view-order-de
 import {ForbiddenComponent} from './auth/forbidden/forbidden.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { SuccessPurchaseComponent } from './user/success-purchase/success-purchase.component';
+import {FilterItems} from "./item/view-items/filter";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { SuccessPurchaseComponent } from './user/success-purchase/success-purcha
     ViewOrdersComponent,
     ViewOrderDetailsComponent,
     ForbiddenComponent,
-    SuccessPurchaseComponent
+    SuccessPurchaseComponent,
+    FilterItems
   ],
   imports: [
     BrowserModule,

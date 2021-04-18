@@ -54,7 +54,7 @@ export class CartComponent implements OnInit {
 
   onDeleteCartItem(id: number): void {
     this.itemService.deleteCartItem(id).subscribe(response =>{
-        this.cartItems.splice(1,this.cartItems.findIndex(i => i.id === response));
+        this.cartItems.splice(this.cartItems.findIndex(i => i.id === response), 1);
       }
     );
   }

@@ -3,6 +3,7 @@ import {ItemService} from "../../services/item/item.service";
 import {Item} from "../../models/item/item";
 import {UserService} from "../../services/user/user.service";
 import {Router} from "@angular/router";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-view-items',
@@ -12,6 +13,7 @@ import {Router} from "@angular/router";
 export class ViewItemsComponent implements OnInit{
 
   public items: Item[] = [];
+  public itemFilterControl: FormControl = new FormControl();
   loading = true;
 
   constructor(public userService: UserService, private itemService: ItemService, private router: Router) {
@@ -52,4 +54,6 @@ export class ViewItemsComponent implements OnInit{
   onViewItem(id: number) {
     this.router.navigate(["/item-page/"+ id]);
   }
+
+
 }
