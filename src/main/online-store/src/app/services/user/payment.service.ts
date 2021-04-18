@@ -9,7 +9,8 @@ export class PaymentService {
 
   private readonly urls = {
     addPayment: '/api/addPayment',
-    deletePayment: '/api/deletePayment'
+    deletePayment: '/api/deletePayment',
+    getPayments: "/api/getPayments"
   };
 
 
@@ -23,6 +24,11 @@ export class PaymentService {
   public deletePayment(id: number): Observable<number> {
     const url = `${this.urls.deletePayment}/${id}`;
     return this.httpClient.delete<number>(url);
+  }
+
+  public getPayments(id: number): Observable<Payment[]> {
+    const url = `${this.urls.getPayments}/${id}`;
+    return this.httpClient.get<Payment[]>(url);
   }
 
 

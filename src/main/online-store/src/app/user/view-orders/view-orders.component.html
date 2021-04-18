@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title text-uppercase mb-0"><b>Purchase History</b></h1>
+        </div>
+        <div class="table-responsive">
+          <table class="table no-wrap user-table mb-0">
+            <thead>
+            <tr>
+              <th scope="col" class="border-0 text-uppercase font-medium pl-4">ID</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">Date</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">Total</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">Manage</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let order of orderItems">
+              <td class="pl-4">{{order.id}}</td>
+              <td>
+                <span class="text-muted">{{order.date}}</span>
+              </td>
+              <td class="trWidth text-muted">
+                <p>€ {{order.total}}</p>
+              </td>
+              <td>
+                <input type="button" [routerLink]="['/view-orders']" value="View Order Details">
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

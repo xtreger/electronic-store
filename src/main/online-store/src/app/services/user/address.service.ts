@@ -1,7 +1,6 @@
 import {HttpClient} from "@angular/common/http";
 import {Address} from "../../models/user/address";
 import {Observable} from "rxjs";
-import {Item} from "../../models/item/item";
 import {Injectable} from "@angular/core";
 @Injectable({
   providedIn: 'root'
@@ -11,7 +10,8 @@ export class AddressService {
   private readonly urls = {
     addAddress: '/api/addAddress',
     deleteAddress: '/api/deleteAddress',
-    updateAddress: "/api/updateAddress"
+    updateAddress: "/api/updateAddress",
+    getAddresses: "/api/getAddresses"
   };
 
 
@@ -31,5 +31,9 @@ export class AddressService {
     return this.httpClient.put<Address>(this.urls.updateAddress, updateAddress);
   }
 
+  public getAddresses(id: number): Observable<Address[]> {
+    const url = `${this.urls.getAddresses}/${id}`;
+    return this.httpClient.get<Address[]>(url);
+  }
 
 }

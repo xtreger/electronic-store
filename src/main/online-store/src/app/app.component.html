@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-5">
-  <a class="navbar-brand" href="/">
+  <a class="navbar-brand" [routerLink]="['/view-items']">
     <span class=" ml-3 font-weight-bold kiwi mat-display-1"><span
       class="main-color">Bit</span><span>connect</span></span>
   </a>
@@ -9,11 +9,16 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
+    <div class="btn-toolbar mr-auto paddingForA">
+      <a [routerLink]="['/view-users']" *ngIf="userService.isAdmin() | async"> View Users</a>
+    </div>
     <div class="btn-toolbar ml-auto">
-      <fa-icon icon="shopping-cart" class="font1-size"></fa-icon>
-      <input type="button" [routerLink]="['/login']" value="Login">
-      <input type="button" value="Logout">
+      <fa-icon icon="shopping-cart" class="font1-size" [routerLink]="['/cart']"></fa-icon>
+
+      <input type="button" *ngIf="!user" [routerLink]="['/login']" value="Login">
+
+      <input type="button" *ngIf="user" (click)="onLogoutClick()" value="Logout">
+
     </div>
   </div>
 </nav>

@@ -4,6 +4,7 @@ import com.online.exception.DuplicateEmailException;
 import com.online.exception.EmailNotFoundException;
 import com.online.exception.ExceptionHandling;
 import com.online.jwt.JWTTokenProvider;
+import com.online.model.OrderItem;
 import com.online.model.User;
 import com.online.model.UserPrincipal;
 import com.online.service.UserService;
@@ -13,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import static com.online.constant.SecurityConstants.TIME;
 
@@ -56,4 +59,10 @@ public class UserController extends ExceptionHandling {
     private void authenticate(String username, String password) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
     }
+
+    @GetMapping("/viewUsers")
+    public List<User> viewUsers(){
+        return userService.getAllUsers();
+    }
+
 }

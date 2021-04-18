@@ -1,20 +1,20 @@
-<div class="row pb-5 mb-4">
+<div class="row pb-5 mb-4" *ngIf="!loading">
   <div class="card rounded shadow-lg border-0 bottom-margin card w-75">
     <div class="card-body p-4 ">
       <div class="row">
         <div class="col">
           <img alt="" class="img-fluid d-block mb-3 w-75"
-               src="https://image1280.macovi.de/images/product_images/1280/1338318_0__73591.jpg">
+               [src]="getImage(item.image)">
         </div>
         <div class="col">
-          <h1>Title</h1>
-          <h2><p class="small text-muted font-italic">Manufacturer</p></h2>
-          <h1>Price</h1>
-          <h4><p class="small text-muted">Description</p></h4>
+          <h1>{{item?.title}}</h1>
+          <h2><p class="small text-muted font-italic">{{item?.manufacturer}}</p></h2>
+          <h1>€{{item?.price}}</h1>
+          <h4><p class="small text-muted">{{item?.description}}</p></h4>
 
           <form>
-            <input type="text" value="1" placeholder="0" class="amountWidth">
-            <input type="submit" value="Add To Cart">
+            <input type="text" [(ngModel)]="cartItem.amount" [ngModelOptions]="{standalone: true}" value="1" class="amountWidth">
+            <input type="submit"  (click)="onAddToCart()" value="Add To Cart">
           </form>
         </div>
       </div>
@@ -25,19 +25,19 @@
   <div class="card rounded shadow-lg border-0 bottom-margin card w-75">
     <h1 class="card-header">Comments</h1>
     <div class="card-body p-4 ">
-      <div class="card">
-        <h3 class="card-header">Name</h3>
+      <div class="card" *ngFor="let comment of item.comments">
+        <h3 class="card-header">{{comment.userName}}</h3><span> {{comment.dateAndTime}} </span>
         <div class="card-body">
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text">{{comment.comment}}</p>
         </div>
       </div>
       <div class="card">
         <h3 class="card-header"><b>Add Comment</b></h3>
         <div class="card-body">
-          <form>
-            <input type="text" class="commentWidth" placeholder="Your Comment">
-            <input type="submit" value="Add Comment">
-          </form></div>
+
+            <input type="text" [(ngModel)]="comment.comment" [ngModelOptions]="{standalone: true}" class="commentWidth" placeholder="Your Comment">
+            <input type="submit" (click)="onSubmitComment()" value="Add Comment">
+          </div>
       </div>
     </div>
   </div>

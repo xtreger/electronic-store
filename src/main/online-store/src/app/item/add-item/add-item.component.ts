@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ItemService} from "../../services/item/item.service";
 import {Item} from "../../models/item/item";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-item',
@@ -22,7 +23,7 @@ export class AddItemComponent implements OnInit {
     amount: new FormControl('', Validators.required)
   });
 
-  constructor(private itemService: ItemService) {
+  constructor(private itemService: ItemService, private router: Router) {
 
   }
 
@@ -43,6 +44,8 @@ export class AddItemComponent implements OnInit {
       this.item = data;
       this.itemService.addImage(imgData, this.item.id).subscribe(data => {
         this.item.image = data;
+        this.router.navigate(["/view-items"]);
+        this.addItemForm.reset();
       });
     })
   }

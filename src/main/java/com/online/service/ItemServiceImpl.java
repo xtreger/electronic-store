@@ -3,10 +3,16 @@ package com.online.service;
 import com.google.gson.Gson;
 import com.online.exception.ItemNotFoundException;
 import com.online.exception.NoItemsFoundException;
+import com.online.model.Comment;
 import com.online.model.Item;
 import com.online.repo.ItemRepo;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import static com.online.constant.ItemConstants.ITEM_NOT_FOUND;
@@ -35,11 +41,13 @@ public class ItemServiceImpl implements ItemService {
         if (currentItem == null) {
             throw new ItemNotFoundException(ITEM_NOT_FOUND);
         }
+        currentItem.setTitle(item.getTitle());
+        currentItem.setPrice(item.getPrice());
         currentItem.setAmount(item.getAmount());
         currentItem.setCategory(item.getCategory());
         currentItem.setDescription(item.getDescription());
-        currentItem.setImage(item.getImage());
         currentItem.setManufacturer(item.getManufacturer());
+        currentItem.setComments(item.getComments());
         return itemRepo.save(currentItem);
     }
 

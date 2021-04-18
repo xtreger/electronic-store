@@ -8,23 +8,23 @@
     </div>
 
     <!-- Login Form -->
-    <form>
-      <label for="login"></label>
-      <input type="text" id="login" class="fadeIn first" name="login" placeholder="Card Number">
+    <form [formGroup]="addCardForm" (ngSubmit)="onAdd()">
+
+      <input type="text" formControlName="cardNo" class="fadeIn first"  placeholder="Card Number">
       <div class="form-wrapper">
         <div>
           <label for="month">
-            <input type="number" placeholder="MM" id="month" class="fadeIn second ">
+            <input type="number" formControlName="expireMonth" placeholder="MM" id="month" class="fadeIn second ">
           </label>
         </div>
         <div>
           <label>
-            <input type="number" placeholder="YY" id="year" size="5" class="fadeIn second ">
+            <input type="number" formControlName="expireYear" placeholder="YY" id="year" size="5" class="fadeIn second ">
           </label>
         </div>
         <div>
           <label>
-            <input type="number" class="fadeIn second " placeholder="CVV"/>
+            <input type="number" formControlName="cvv" class="fadeIn second " placeholder="CVV"/>
           </label>
         </div>
       </div>

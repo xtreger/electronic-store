@@ -1,12 +1,17 @@
 package com.online.controller;
 
+import com.online.exception.CartItemNotFoundException;
 import com.online.exception.ExceptionHandling;
 import com.online.exception.ItemNotFoundException;
 import com.online.exception.NoItemsFoundException;
+import com.online.model.CartItem;
 import com.online.model.Comment;
 import com.online.model.Item;
+import com.online.model.OrderItem;
+import com.online.service.CartItemService;
 import com.online.service.CommentService;
 import com.online.service.ItemService;
+import com.online.service.OrderItemService;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +27,15 @@ public class ItemController extends ExceptionHandling {
 
     private final ItemService itemService;
     private final CommentService commentService;
+    private final CartItemService cartItemService;
+    private final OrderItemService orderItemService;
 
     @Autowired
-    public ItemController(ItemService itemService, CommentService commentService) {
+    public ItemController(ItemService itemService, CommentService commentService, CartItemService cartItemService, OrderItemService orderItemService) {
         this.itemService = itemService;
         this.commentService = commentService;
+        this.cartItemService = cartItemService;
+        this.orderItemService = orderItemService;
     }
 
 
@@ -85,6 +94,32 @@ public class ItemController extends ExceptionHandling {
     @PostMapping("/addComment")
     public Comment addComment(@RequestBody Comment comment) {
         return commentService.addComment(comment);
+    }
+
+    @PostMapping("/addCartItem")
+    public CartItem addCartItem(@RequestBody CartItem cartItem) {
+        return cartItemService.addCartItem(cartItem);
+    }
+
+    @DeleteMapping("/deleteCartItem/{id}")
+    public Long deleteCartItem(@PathVariable Long id) throws CartItemNotFoundException {
+        cartItemService.deleteCartItem(id);
+        return id;
+    }
+
+    @GetMapping("/getCartItems/{id}")
+    public List<CartItem> getCartItems(@PathVariable Long id) throws CartItemNotFoundException {
+        return cartItemService.getCartItems(id);
+    }
+
+    @PostMapping("/addOrderItems")
+    public OrderItem addOrderItems(@RequestBody OrderItem orderItem) {
+        return orderItemService.addOrderItem(orderItem);
+    }
+
+    @GetMapping("/getOrderItems/{id}")
+    public List<OrderItem> getOrderItems(@PathVariable Long id){
+        return orderItemService.getOrderItems(id);
     }
 
 

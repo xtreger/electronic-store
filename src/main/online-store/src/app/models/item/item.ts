@@ -1,6 +1,6 @@
 import {CommentModel} from "./comment.model";
 
-export interface Item {
+export class Item {
 
   id: number;
   title:string;

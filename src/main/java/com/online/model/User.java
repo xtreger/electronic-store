@@ -40,5 +40,9 @@ public class User {
     @JoinColumn(name = "userId")
     private List<Payment> paymentDetails;
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId")
+    private List<OrderItem> orders;
+
 
 }

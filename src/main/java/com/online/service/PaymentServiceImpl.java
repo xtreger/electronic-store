@@ -6,6 +6,8 @@ import com.online.repo.PaymentRepo;
 import org.springframework.stereotype.Service;
 
 
+import java.util.List;
+
 import static com.online.constant.ItemConstants.CARD_NOT_FOUND;
 
 @Service
@@ -19,7 +21,7 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public Payment addPayment(Payment payment) {
-
+        payment.setCardNoDisplay(payment.getCardNo());
         return paymentRepo.save(payment);
     }
 
@@ -29,5 +31,12 @@ public class PaymentServiceImpl implements PaymentService{
         Payment currentPayment = paymentRepo.findById(id).orElse(null);
         if( currentPayment == null)
             throw new CardNotFoundException(CARD_NOT_FOUND);
+
+        paymentRepo.deleteById(id);
+    }
+
+    @Override
+    public List<Payment> getAllPayments(Long id) {
+        return paymentRepo.findAllByUserId(id);
     }
 }

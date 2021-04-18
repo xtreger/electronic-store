@@ -8,36 +8,35 @@
     </div>
 
     <!-- Login Form -->
-    <form>
+
+    <form [formGroup]="addAddressForm" (ngSubmit)="onAdd()">
       <div class="form-wrapper">
         <div>
-          <label for="first"></label>
-          <input type="text" id="first" class="fadeIn first" placeholder="First Name">
+          <input type="text" formControlName="firstName" id="firstName" class="fadeIn first" placeholder="First Name">
         </div>
         <div>
-          <label for="last"></label>
-          <input type="text" id="last" class="fadeIn first " placeholder="Last Name">
+          <input type="text" formControlName="lastName" id="lastName" class="fadeIn first " placeholder="Last Name">
         </div>
-        <div class="full-row">
-          <label for="address1"></label>
-          <input type="text" id="address1" class="fadeIn second " placeholder="Address Line 1">
-        </div>
-        <div>
-          <label for="address2"></label>
-          <input type="text" id="address2" class="fadeIn third " placeholder="Address Line 2">
+        <div >
+          <input type="text" formControlName="address1" id="address1" class="fadeIn second "
+                 placeholder="Address Line 1">
         </div>
         <div>
-          <label for="first"></label>
-          <input type="text" id="county" class="fadeIn fourth" placeholder="County">
+          <input type="text" formControlName="address2" id="address2" class="fadeIn third "
+                 placeholder="Address Line 2">
+        </div>
+        <div >
+          <input type="text" formControlName="city" id="city" class="fadeIn second "
+                 placeholder="City">
         </div>
         <div>
-          <label for="first"></label>
-          <input type="text" id="country" class="fadeIn fourth" placeholder="Country">
+          <input type="text" formControlName="county" id="county" class="fadeIn fourth" placeholder="County">
         </div>
         <div>
-          <label for="last"></label>
-          <input type="text" id="eircode" class="fadeIn fourth " placeholder="Eircode">
+          <input type="text" formControlName="country" id="country" class="fadeIn fourth" placeholder="Country">
         </div>
+        <input type="text" formControlName="eirCode" id="eircode" class="fadeIn fourth " placeholder="Eircode">
+
         <div class="full-row">
           <input type="submit" class="fadeIn fourth" value="add address">
         </div>

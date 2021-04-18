@@ -1,36 +1,35 @@
-<div class="container py-5">
+<div class="container py-5" *ngIf="!loading">
   <div class="row pb-1">
-    <input type="button" [routerLink]="['/add-item']" value="Add item">
+    <input type="button" [routerLink]="['/add-item']" *ngIf="userService.isAdmin() | async" value="Add item">
     <form class="form-inline my-2 my-lg-0 ml-auto">
       <input type="search" placeholder="Search" aria-label="Search">
       <input type="submit" value="Search">
     </form>
   </div>
   <div class="row pb-5 mb-4">
-    <div *ngFor="let item of items" class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+    <div *ngFor="let item of items" class="col-lg-3 col-md-6 mb-4 mb-lg-0" >
       <!-- Card-->
-      <div class="card rounded shadow-lg border-0 bottom-margin ">
-        <a href="">
+      <div class="card rounded shadow-lg border-0 bottom-margin " >
           <div class="card-body p-4 "><img
             [src]="getImage(item.image)" alt=""
-            class="img-fluid d-block mx-auto mb-3">
-            <h4>{{item?.title}}</h4>
+            class="img-fluid d-block mx-auto mb-3" (click)="onViewItem(item.id)">
+            <h4 (click)="onViewItem(item.id)" >{{item?.title}}</h4>
             <p class="small text-muted font-italic">{{item?.manufacturer}}</p>
-            <h5>€{{item?.price}}</h5>
+            <h5 >€{{item?.price}}</h5>
             <div class="d-flex flex-row-reverse">
-              <a href="#" class="btn btn-primary tooltips btn-margin" data-placement="top"
-                 data-toggle="tooltip"
+              <button class="btn btn-primary tooltips btn-margin" *ngIf="userService.isAdmin() | async" data-placement="top"
+                 data-toggle="tooltip"  (click)="onEditItem(item)"
                  data-original-title="Edit">
                 <fa-icon icon="edit" class="font1-size"></fa-icon>
-              </a>
-              <a href="#" class="btn btn-danger tooltips btn-margin" data-placement="top"
-                 data-toggle="tooltip"
+              </button>
+              <button class="btn btn-danger tooltips btn-margin" *ngIf="userService.isAdmin() | async" data-placement="top"
+                 data-toggle="tooltip" (click)="onDeleteItem(item.id)"
                  data-original-title="Delete">
                 <fa-icon icon="times" class="font1-size"></fa-icon>
-              </a>
+              </button>
             </div>
           </div>
-        </a>
+
       </div>
     </div>
 

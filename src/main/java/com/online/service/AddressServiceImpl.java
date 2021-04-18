@@ -6,6 +6,8 @@ import com.online.model.Address;
 import com.online.repo.AddressRepo;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static com.online.constant.ItemConstants.ADDRESS_NOT_FOUND;
 
 @Service
@@ -27,6 +29,8 @@ public class AddressServiceImpl implements AddressService{
         Address currentAddress = addressRepo.findById(id).orElse(null);
         if( currentAddress == null)
             throw new AddressNotFoundException(ADDRESS_NOT_FOUND);
+
+        addressRepo.deleteById(id);
     }
 
     @Override
@@ -45,5 +49,10 @@ public class AddressServiceImpl implements AddressService{
         currentAddress.setCountry(address.getCountry());
         currentAddress.setEirCode(address.getEirCode());
         return addressRepo.save(currentAddress);
+    }
+
+    @Override
+    public List<Address> getAllAddresses(Long id) {
+        return addressRepo.findAllByUserId(id);
     }
 }

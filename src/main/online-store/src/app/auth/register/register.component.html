@@ -8,16 +8,18 @@
     </div>
 
     <!-- Login Form -->
-    <form>
-      <label for="name"></label>
-      <input type="text" id="name" class="fadeIn first" name="login" placeholder="Name">
-      <label for="email"></label>
-      <input type="text" id="email" class="fadeIn second" name="login" placeholder="Email">
-      <label for="password"></label>
-      <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password">
-      <label for="repeatPassword"></label>
-      <input type="password" id="repeatPassword" class="fadeIn fourth" name="login" placeholder="Repeat Password">
-      <input type="submit" class="fadeIn fifth" value="Register">
+    <form [formGroup]="addUserForm" (ngSubmit)="onAdd()">
+
+      <input type="text" formControlName="name"class="fadeIn first" name="login" placeholder="Name">
+
+      <input type="text" formControlName="email"class="fadeIn second" name="login" placeholder="Email">
+
+      <input type="text" formControlName="phoneNumber"class="fadeIn third" name="phone" placeholder="Phone Number">
+
+      <input type="password" formControlName="password"class="fadeIn fourth" name="login" placeholder="Password">
+
+      <input type="password"class="fadeIn fifth" name="login" placeholder="Repeat Password">
+      <input type="submit" class="fadeIn fifth" (click)="onRegisterClick()" value="Register">
     </form>
 
     <!-- Register -->

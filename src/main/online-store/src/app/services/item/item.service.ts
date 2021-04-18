@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Item} from "../../models/item/item";
 import {CommentModel} from "../../models/item/comment.model";
+import {CartItemModel} from "../../models/item/cart.mdel";
+import {OrderModel} from "../../models/item/order.model";
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +21,11 @@ export class ItemService {
     updateRating: '/api/updateRating',
     addImage: '/api/addImage',
     addComment: '/api/addComment',
+    addCartItem: "/api/addCartItem",
+    deleteCartItem: "/api/deleteCartItem",
+    getCartItems: "/api/getCartItems",
+    getOrderItems: "/api/getOrderItems",
+    addOrderItems: "/api/addOrderItems"
   };
 
 
@@ -42,7 +49,7 @@ export class ItemService {
     return this.httpClient.put<Item>(this.urls.updateItem, updateItem);
   }
 
-  public deleteItem(id: number): Observable<number> {
+  public  deleteItem(id: number): Observable<number> {
     const url = `${this.urls.deleteItem}/${id}`;
     return this.httpClient.delete<number>(url);
   }
@@ -51,7 +58,7 @@ export class ItemService {
     return this.httpClient.put<Item>(this.urls.updateAmount, updateAmount);
   }
 
-  public updatePurchaseAmount(updatePurchaseAmount: Item): Observable<Item> {
+  public updatePurchaseAmount(updatePurchaseAmount: Item | undefined): Observable<Item> {
     return this.httpClient.put<Item>(this.urls.updatePurchaseAmount, updatePurchaseAmount);
   }
 
@@ -66,6 +73,30 @@ export class ItemService {
 
   public addComment(addComment: CommentModel): Observable<CommentModel> {
     return this.httpClient.post<CommentModel>(this.urls.addComment, addComment);
+  }
+
+  public addToCart(addToCart: CartItemModel): Observable<CartItemModel> {
+    return this.httpClient.post<CartItemModel>(this.urls.addCartItem, addToCart)
+  }
+
+  public getCartItems(id: number): Observable<CartItemModel[]> {
+    const url = `${this.urls.getCartItems}/${id}`;
+    return this.httpClient.get<CartItemModel[]>(url);
+  }
+
+
+  public  deleteCartItem(id: number): Observable<number> {
+    const url = `${this.urls.deleteCartItem}/${id}`;
+    return this.httpClient.delete<number>(url);
+  }
+
+  public getOrderItems(id: number): Observable<OrderModel[]> {
+    const url = `${this.urls.getOrderItems}/${id}`;
+    return this.httpClient.get<OrderModel[]>(url);
+  }
+
+  public addOrderItems(addOrderItems: OrderModel): Observable<OrderModel> {
+    return this.httpClient.post<OrderModel>(this.urls.addOrderItems, addOrderItems);
   }
 
 }

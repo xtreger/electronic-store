@@ -1,0 +1,35 @@
+<div class="card" *ngIf="!loading">
+  <div class="row">
+    <div class="col-md-8 cart">
+      <div class="title">
+        <div class="row">
+          <div class="col">
+            <h4><b>Shopping Cart</b></h4>
+          </div>
+          <div class="col align-self-center text-right text-muted"></div>
+        </div>
+      </div>
+      <div class="row border-top border-bottom"*ngFor="let item of cartItems">
+        <div class="row main align-items-center">
+          <div class="col-2"><img class="img-fluid" [src]="getImage(items.get(item.id)?.image)"></div>
+          <div class="col">
+            <div class="row text-muted">{{items.get(item.id)?.title}}</div>
+          </div>
+          <div class="col">{{item.amount}}</div>
+          <div class="col">{{items.get(item.id)?.price}}<button class="close" (click)="onDeleteCartItem(item.id)" >&#10005;</button></div>
+        </div>
+      </div>
+      <div ><button class="btn btnWidth" (click)="onReturnToShop()">BACK TO SHOP</button></div>
+    </div>
+    <div class="col-md-4 summary">
+      <div>
+        <h5><b>Summary</b></h5>
+      </div>
+
+      <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+        <div class="col">TOTAL PRICE</div>
+        <div class="col text-right">&euro; {{total()}}</div>
+      </div> <button class="btn" *ngIf="cartItems.length!==0" (click)="onCheckout()">CHECKOUT</button>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-export interface CommentModel {
+export class CommentModel {
 
   id: number;
   itemId: number;

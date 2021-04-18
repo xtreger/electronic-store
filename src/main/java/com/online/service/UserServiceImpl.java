@@ -13,8 +13,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 import static com.online.constant.UserConstants.EMAIL_ALREADY_EXISTS;
 import static com.online.constant.UserConstants.NO_USER_FOUND_BY_EMAIL;
+import static com.online.enums.Role.ROLE_ADMIN;
 import static com.online.enums.Role.ROLE_USER;
 
 @Service
@@ -67,10 +70,15 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         String encodedPassword = encodePassword(user.getPassword());
         user.setPassword(encodedPassword);
-        user.setRole(ROLE_USER.name());
-        user.setPrivileges(ROLE_USER.getAuthorities());
+        user.setRole(ROLE_ADMIN.name());
+        user.setPrivileges(ROLE_ADMIN.getAuthorities());
 
         return userRepo.save(user);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepo.findAll();
     }
 
     private String encodePassword(String password) {

@@ -1,0 +1,135 @@
+<div class="card">
+  <div class="row">
+    <div class="col-md-8 cart">
+      <div class="title">
+        <div class="row">
+          <div class="col">
+            <h4><b>Checkout</b></h4>
+          </div>
+          <div class="col align-self-center text-right text-muted"></div>
+        </div>
+      </div>
+      <div class="row border-top border-bottom"*ngFor="let item of cartItems">
+        <div class="row main align-items-center">
+          <div class="col-2"><img class="img-fluid" [src]="getImage(items.get(item.id)?.image)"></div>
+          <div class="col">
+            <div class="row text-muted">{{items.get(item.id)?.title}}</div>
+          </div>
+          <div class="col">{{item.amount}}</div>
+          <div class="col">{{items.get(item.id)?.price}}<button class="close" (click)="onDeleteCartItem(item.id)" >&#10005;</button></div>
+        </div>
+      </div>
+      <div ><button class="btn btnWidth" (click)="onReturnToShop()">BACK TO SHOP</button></div>
+    </div>
+    <div class="col-md-4 summary">
+      <div>
+        <h5><b>Summary</b></h5>
+      </div>
+
+      <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+        <div class="col">TOTAL PRICE</div>
+        <div class="col text-right">&euro; {{totalAmount()}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="row cart2">
+    <div class="col-md-12 ">
+      <div class="title">
+        <div class="row">
+          <div class="col">
+            <h4><b>Payment Method</b></h4>
+          </div>
+          <div class="col align-self-center text-right text-muted"></div>
+        </div>
+      </div>
+      <fieldset id="group1">
+        <div class="row border-top border-bottom" *ngIf="cards.length===0">
+          <div class="row main align-items-center">
+            <div class="col-2">NONE</div>
+            <div class="col">
+              <div class="row">&nbsp;</div>
+            </div>
+            <div class="col"> &nbsp;</div>
+            <div class="col"><input type="radio" class="form-check-input" name="group1"></div>
+          </div>
+        </div>
+        <div class="row border-top border-bottom" *ngFor="let card of cards">
+          <div class="row main align-items-center">
+            <div class="col-2">VISA</div>
+            <div class="col">
+              <div class="row">{{card.cardNoDisplay}}</div>
+            </div>
+            <div class="col">{{card.expireDate}}</div>
+            <div class="col"><input type="radio" class="form-check-input" checked="checked" name="group1">
+              <button class="close" (click)="onDeleteCard(card.id)">&#10005;</button></div>
+          </div>
+        </div>
+      </fieldset>
+      <div>
+        <button class="btn btnWidth" (click)="onAddCard()">ADD CARD</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="row cart2">
+    <div class="col-md-12 ">
+      <div class="title">
+        <div class="row">
+          <div class="col">
+            <h4><b>Address</b></h4>
+          </div>
+          <div class="col align-self-center text-right text-muted"></div>
+        </div>
+      </div>
+      <fieldset id="group2">
+        <div class="row border-top border-bottom" *ngIf="addresses.length===0">
+          <div class="row main align-items-center">
+            <div class="col-9">NONE</div>
+
+            <div class="col"><input type="radio" class="form-check-input" name="group2" checked="checked"></div>
+          </div>
+        </div>
+        <div *ngFor="let address of addresses" class="row border-top border-bottom">
+          <div class="row main align-items-center">
+            <div class="col-9">
+              <span>{{address.firstName}}</span>&nbsp;
+              <span>{{address.lastName}}</span><br>
+              <span>{{address.address1}},</span>&nbsp;
+              <span>{{address.address2}},</span>&nbsp;
+              <span>{{address.city}},</span>&nbsp;
+              <span>{{address.county}},</span>&nbsp;
+              <span>{{address.eirCode}}</span>
+            </div>
+
+            <div class="col">
+              <input type="radio" class="form-check-input" checked="checked" name="group2">
+              <button class="close" (click)="onDeleteAddress(address.id)">&#10005;</button>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <div>
+        <button class="btn btnWidth" (click)="onAddAddress()">ADD ADDRESS</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="row cart2">
+    <div class="col-12 ">
+      <div>
+        <h3><button class="btn" *ngIf="addresses.length===0 || cards.length===0" disabled>CONFIRM PURCHASE</button></h3>
+        <h3><button class="btn" *ngIf="addresses.length!==0 && cards.length!==0" (click)="onSuccessPurchase()">CONFIRM PURCHASE</button></h3>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

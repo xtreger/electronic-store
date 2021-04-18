@@ -2,8 +2,10 @@ import {HttpClient} from "@angular/common/http";
 import {BehaviorSubject, Observable} from "rxjs";
 import {User} from "../../models/user/user";
 import {Router} from "@angular/router";
-import {tap} from "rxjs/operators";
+import {map, tap} from "rxjs/operators";
 import {Injectable} from "@angular/core";
+import {Payment} from "../../models/user/card";
+import {Item} from "../../models/item/item";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,8 @@ export class UserService {
 
   private readonly urls = {
     register: "/api/register",
-    login: "/api/login"
+    login: "/api/login",
+    getUsers: "/api/viewUsers"
   };
 
   public user = new BehaviorSubject<User | null>(null);
@@ -50,4 +53,13 @@ export class UserService {
     }
   }
 
+  public isAdmin(): Observable<boolean|undefined> {
+    return this.user.pipe(map(u => {
+      return u?.privileges.some(p => p==="perm:admin");
+    }));
+  }
+
+  public getUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.urls.getUsers);
+  }
 }

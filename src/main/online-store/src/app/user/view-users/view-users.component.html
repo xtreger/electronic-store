@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title text-uppercase mb-0"><b>Manage Users</b></h1>
+        </div>
+        <div class="table-responsive">
+          <table class="table no-wrap user-table mb-0">
+            <thead>
+            <tr>
+              <th scope="col" class="border-0 text-uppercase font-medium pl-4">ID</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">Name</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">Email</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">Phone</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">Role</th>
+              <th scope="col" class="border-0 text-uppercase font-medium">Manage</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users">
+              <td class="pl-4">{{user.id}}</td>
+              <td>
+                <span class="text-muted">{{user.name}}</span>
+              </td>
+              <td class="trWidth text-muted">
+                <p>{{user.email}}</p>
+              </td>
+              <td>
+                <span class="text-muted">{{user.phoneNumber}}</span>
+              </td>
+              <td>
+                {{user.role}}
+              </td>
+              <td>
+                <input type="button" (click)="onViewOrders(user.id)" value="View Orders">
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

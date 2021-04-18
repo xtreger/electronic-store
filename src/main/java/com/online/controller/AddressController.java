@@ -1,10 +1,14 @@
 package com.online.controller;
 
 import com.online.exception.AddressNotFoundException;
+import com.online.exception.CartItemNotFoundException;
 import com.online.exception.ExceptionHandling;
 import com.online.model.Address;
+import com.online.model.CartItem;
 import com.online.service.AddressService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -30,6 +34,11 @@ public class AddressController extends ExceptionHandling {
     public Long deleteAddress(@PathVariable Long id) throws AddressNotFoundException{
         addressService.deleteAddress(id);
         return id;
+    }
+
+    @GetMapping("/getAddresses/{id}")
+    public List<Address> getCartItems(@PathVariable Long id) {
+        return addressService.getAllAddresses(id);
     }
 
 

@@ -20,11 +20,7 @@ export class AuthGuard implements CanActivate {
     if (!user)
       return found;
 
-    for (let i = 0; i < route.data.authorities.length; i++) {
-      found = !!user.privileges.find(auth => auth === route.data.authorities[i]);
-      if (found)
-        return found;
-    }
+    found = user.privileges.some(p => p === route.data.authorities)
     return found;
   }
 
@@ -41,10 +37,11 @@ export class AuthGuard implements CanActivate {
       take(1),
       map(user => {
         const isAuth = !!user;
+        console.log(isAuth);
         if (isAuth) {
 
           if (route.data.authorities && !AuthGuard._verifyTheRoles(route, user)) {
-            //return this.router.createUrlTree([ROUTE_PATH_ERROR]);
+            return this.router.createUrlTree(['/forbidden']);
           }
 
           return true;
